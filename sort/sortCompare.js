@@ -2,6 +2,7 @@
 exports.__esModule = true;
 var insertion_1 = require("./insertion");
 var selectionSort_1 = require("./selectionSort");
+var shell_1 = require("./shell");
 var SortCompare = /** @class */ (function () {
     function SortCompare() {
     }
@@ -14,6 +15,9 @@ var SortCompare = /** @class */ (function () {
                 break;
             case 'Selection':
                 selectionSort_1["default"].sort(a);
+                break;
+            case 'Shell':
+                shell_1["default"].sort(a);
                 break;
             default:
                 break;
@@ -40,9 +44,11 @@ var SortCompare = /** @class */ (function () {
         var T = 100;
         var t1 = SortCompare.timeRandomInput('Insertion', N, T);
         var t2 = SortCompare.timeRandomInput('Selection', N, T);
+        var t3 = SortCompare.timeRandomInput('Shell', N, T);
         console.log('插入排序总用时', t1);
         console.log('选择排序总用时', t2);
-        console.log('比值', t2 / t1);
+        console.log('希尔排序总用时', t3);
+        // console.log('比值', t2 / t1);
     };
     return SortCompare;
 }());

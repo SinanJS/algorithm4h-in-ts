@@ -1,6 +1,7 @@
-import { Comparable } from './base';
+import {Comparable} from './base';
 import Insertion from './insertion';
 import Selection from './selectionSort';
+import Shell from './shell';
 
 class SortCompare {
     static time(alg: string, a: Comparable[]) {
@@ -13,6 +14,9 @@ class SortCompare {
             case 'Selection':
                 Selection.sort(a);
                 break;
+            case 'Shell':
+                Shell.sort(a);
+                break;
             default:
                 break;
         }
@@ -21,6 +25,7 @@ class SortCompare {
         // console.log('eb', end - start);
         return end - start;
     }
+
     // 使用 alg 算法将 T 个长度为 N 的数组排序
     static timeRandomInput(alg: string, N: number, T: number) {
         let total = 0;
@@ -33,14 +38,17 @@ class SortCompare {
         }
         return total;
     }
+
     main() {
         let N = 10000;
         let T = 100;
         const t1 = SortCompare.timeRandomInput('Insertion', N, T);
         const t2 = SortCompare.timeRandomInput('Selection', N, T);
+        const t3 = SortCompare.timeRandomInput('Shell', N, T);
         console.log('插入排序总用时', t1);
         console.log('选择排序总用时', t2);
-        console.log('比值', t2 / t1);
+        console.log('希尔排序总用时', t3);
+        // console.log('比值', t2 / t1);
     }
 
 }
